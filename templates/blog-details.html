@@ -1,46 +1,8 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ post.title }}</title>
-    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png">
 
-    <link rel="stylesheet" href="{% static 'styles.min.css' %}">
-</head>
-<body>
-<!--================Header Menu Area =================-->
-<header class="header_area">
-    <div class="main_menu">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container box_1620">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav menu_nav justify-content-center">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right navbar-social">
-                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                        <li><a href="#"><i class="ti-instagram"></i></a></li>
-                        <li><a href="#"><i class="ti-skype"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-</header>
-<!--================Header Menu Area =================-->
+{% block content %}
 
 <!--================ Hero sm Banner start =================-->
 <section class="mb-30px">
@@ -50,8 +12,8 @@
                 <h1>Blog details</h1>
                 <nav aria-label="breadcrumb" class="banner-breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
                     </ol>
                 </nav>
             </div>
@@ -66,8 +28,6 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="main_blog_details">
-
-                    {% comment %}           <img class="img-fluid" src=" {% static 'img/blog/blog4.png' %}" alt="">{% endcomment %}
                     {% if post.image_url %}
                         <img class="img-fluid" src="{{ post.image_url }}" alt="">
                     {% else %}
@@ -87,7 +47,6 @@
                     </div>
                     <p>{{ post.text }}</p>
                     <div class="news_d_footer flex-column flex-sm-row">
-{#                        <ul class="thumb-info" style="max-width: 550px">   <!--INLINE STYLE!-->#}
                         <a href="#"><span class="align-middle mr-2"><i class="ti-heart" style="color: red"></i>
                         </span>{{ post.likes_amount }} people like this </a>
                         <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><span class="align-middle mr-2"><i class="ti-themify-favicon"></i></span>{{ post.comments |length }} comments </a>
@@ -104,23 +63,22 @@
                     <h4>{{ post.comments |length }} comments </h4>
                     {% for comment in post.comments %}
                         <div class="comment-list">
-                        <div class="single-comment justify-content-between d-flex">
-                            <div class="user justify-content-between d-flex">
-                                <div class="desc">
-                                    <h5><a href="#">{{ comment.author }}</a></h5>
-                                    <p class="date">{{ comment.published_at }}</p>
-                                    <p class="comment">{{ comment.text }}</p>
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="desc">
+                                        <h5><a href="#">{{ comment.author }}</a></h5>
+                                        <p class="date">{{ comment.published_at }}</p>
+                                        <p class="comment">{{ comment.text }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="reply-btn">
-                                <a href="" class="btn-reply text-uppercase">reply</a>
+                                <div class="reply-btn">
+                                    <a href="" class="btn-reply text-uppercase">reply</a>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
-                    </div>
                 </div>
             </div>
-
 
             <!-- Start Blog Post Siddebar -->
             <div class="col-lg-4 sidebar-widgets">
@@ -220,5 +178,5 @@
 <!--================ End Footer Area =================-->
 
 <script src="{% static 'scripts.js' %}"></script>
-</body>
+{% endblock %}
 </html>
