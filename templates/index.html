@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
+
 {% load static %}
 
 {% block content %}
@@ -11,7 +11,7 @@
                 <div class="hero-banner__content">
                     <h3>Tours &amp; Travels</h3>
                     <h1>Amazing Places on earth</h1>
-                    <h4>December 12, 2018</h4>
+                    <h4><script>const now = new Date();document.write(now.toDateString())</script></h4>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                                     {% if post.image_url %}
                                         <img class="card-img rounded-0" src="{{ post.image_url }}" alt="">
                                     {% else %}
-                                        <img class="card-img rounded-0" src="{% static 'img/banner/blog.png' %}">
+                                        <img class="card-img rounded-0" src="{% static 'img/banner/blog.png' %}" alt="">
                                     {% endif %}
                                 </div>
                                 <div class="blog__slide__content">
@@ -57,7 +57,7 @@
                                     {% if post.image_url %}
                                         <img class="img-fluid" src="{{ post.image_url }}" alt="">
                                     {% else %}
-                                        <img class="img-fluid" src="{% static 'img/banner/blog.png' %}">
+                                        <img class="img-fluid" src="{% static 'img/banner/blog.png' %}" alt="">
                                     {% endif %}
                                     <ul class="thumb-info" style="max-width: 550px">   <!--INLINE STYLE!-->
                                         <li><a href="{% url 'post_detail' slug=post.slug %}"><i class="ti-user"></i>{{post.author}}</a></li>
@@ -129,4 +129,4 @@
     </main>
 
 {% endblock %}
-</html>
+
