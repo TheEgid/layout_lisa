@@ -91,9 +91,9 @@ local_settings.py
 db.sqlite3
 
 /media/
-/static/img/
-/static/fonts/
 /media/images/
 
 
 /.vscode/
+
+
