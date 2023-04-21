@@ -6,6 +6,6 @@ marshmallow==3.10.0
 Pillow==9.3.0 
 python-dotenv==0.15.0
 pytz==2021.1
-sqlparse==0.4.2
+sqlparse==0.4.4
 folium==0.12.1
 django-debug-toolbar==3.2.1
